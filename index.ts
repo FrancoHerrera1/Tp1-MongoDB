@@ -69,6 +69,19 @@ const createBook = async(newBook: object) => {
   }
 }
 
+/*Ej para Crear: 
+
+createBook({
+  titulo: "string",
+  autor: "string",
+  anio: number,
+  editorial: "string",
+  genero: "string",
+  estado: "disponible",
+})
+*/
+
+
 //Se declara "getBooks" para obtener todos los libros disponibles
 
 const getBooks = async () => {
@@ -79,6 +92,9 @@ const getBooks = async () => {
     console.log("Error al recuperar tus libros")
   }
 }
+
+//Para mostrar TODOS los libros se usa: getBooks()
+
 
 //Se declara "getBookById" para obtener un libro por su id
 
@@ -95,6 +111,9 @@ const getBookById = async (id: string) => {
   }
 }
 
+//Para buscar un libro por su id se usa: getBookById("id")
+
+
 //Se declara "getBookByName" para obtener un libro por su nombre
 
 const getBookByName = async (name: string) => {
@@ -110,6 +129,9 @@ const getBookByName = async (name: string) => {
   }
 };
 
+//Para buscar un libro por su nombre se usa:  getBookByName("titulo del Libro")
+
+
 //Se declara "updateBook" para buscar el libro por id y actualizarlo
 
 const updateBook = async (id: string, body: object) => {
@@ -118,12 +140,14 @@ const updateBook = async (id: string, body: object) => {
     if (!updateBook) {
       console.log("No se encuentra el libro")
    } else { 
-    console.log(updateBook, "Tu libro ha sido actualizado")
+    console.log(updateBook, "Tu libro ha sido actualizado!")
    }
   } catch (error) {
     console.log("Error al actualizar tu libro")
   }
 }
+
+//Para actualizar un libro se usa: updateBook("id", {titulo: "NewTitulo", anio: 2024})
 
 
 // Se declara "deleteBook" para buscar el libro por id y borrarlo
@@ -134,10 +158,13 @@ const deleteBook = async (id: string) => {
     if (!deletedBook) {
       console.log("Libro no encontrado")
     } else {
-      console.log(deletedBook)
+      console.log(deletedBook, "Tu libro ha sido borrado!")
     }
   } catch (error) {
     console.log("Error al borrar tu libro")
   }
 }
+
+//Para borrar un libro por id se debe hacer: deleteBook("id")
+
 
