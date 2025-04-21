@@ -1,5 +1,6 @@
 import { connectDB } from "./config/mongo";
 import mongoose, { Document, Schema } from "mongoose";
+const fs = require('fs');
 
 connectDB()
 
@@ -25,10 +26,27 @@ bookSchema.set("strict", true)
 
 const Book = mongoose.model<BookInterface>("book", bookSchema)
 
+//Funcion para cargar DB de libros del archivo "Libros.json"
+
+fs.readFile('libros.json', 'utf8', async (err: NodeJS.ErrnoException | null, data: string) => {
+  if (err) throw err;
+
+  const libros = JSON.parse(data); // convertimos el JSON a objetos
+
+  try {
+    await Book.insertMany(libros);
+    console.log('Libros insertados correctamente.');
+  } catch (error) {
+    console.error('Error insertando libros:', error);
+  } finally {
+    mongoose.disconnect();
+  }
+});
+
 
 //Se declara el "Create" para cargar tus libros
 
-const createBook = async(newBook: BookInterface) => {
+const createBook = async(newBook: object) => {
   try {
     const book: BookInterface = new Book(newBook)
 
@@ -54,9 +72,12 @@ const getBooks = async () => {
 
 const getBookById = async (id: string) => {
   try {
-    const bookId = new mongoose.Types.ObjectId("id")
-    const book = await Book.findById(bookId)
-    console.log(book)
+    const book = await Book.findById(id)
+    if (!book) {
+      console.log("Tu libro no ha sido encontrado")
+    } else {
+      console.log(book)
+    }
   } catch (error) {
     console.log("Error al recuperar tu libro")
   }
@@ -66,11 +87,11 @@ const getBookById = async (id: string) => {
 
 const getBookByName = async (name: string) => {
   try {
-    const book = await Book.findOne({ name })
+    const book = await Book.findOne({ titulo: name })
   if (!book) {
     console.log("Tu libro no ha sido encontrado")
   } else {
-    console.log(book.estado);
+    console.log(book);
   }
   } catch (error) {
     console.log("Error al recuperar tu libro")
@@ -98,10 +119,10 @@ const updateBook = async (id: string, body: object) => {
 const deleteBook = async (id: string) => {
   try {
     const deletedBook = await Book.findByIdAndDelete(id)
-    if (!deleteBook) {
+    if (!deletedBook) {
       console.log("Libro no encontrado")
     } else {
-      console.log(deleteBook)
+      console.log(deletedBook)
     }
   } catch (error) {
     console.log("Error al borrar tu libro")
