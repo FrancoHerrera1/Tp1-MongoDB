@@ -26,23 +26,35 @@ bookSchema.set("strict", true)
 
 const Book = mongoose.model<BookInterface>("book", bookSchema)
 
+
 //Funcion para cargar DB de libros del archivo "Libros.json"
 
-fs.readFile('libros.json', 'utf8', async (err: NodeJS.ErrnoException | null, data: string) => {
-  if (err) throw err;
+async function start() {
 
-  const libros = JSON.parse(data); // convertimos el JSON a objetos
+  const count = await Book.countDocuments();
 
-  try {
-    await Book.insertMany(libros);
-    console.log('Libros insertados correctamente.');
-  } catch (error) {
-    console.error('Error insertando libros:', error);
-  } finally {
-    mongoose.disconnect();
+  if (count === 0) {
+    // Solo si no hay libros en la colección, cargamos los datos
+    fs.readFile('libros.json', 'utf8', async (err: any, data: any) => {
+      if (err) throw err;
+
+      const libros = JSON.parse(data);
+
+      try {
+        await Book.insertMany(libros);
+        console.log('Libros insertados correctamente.');
+      } catch (error) {
+        console.error('Error insertando libros:', error);
+      } finally {
+      }
+    });
+  } else {
+    console.log('La colección ya tiene datos. No se insertó nada.');
   }
-});
+}
 
+start()
+    
 
 //Se declara el "Create" para cargar tus libros
 
@@ -106,7 +118,7 @@ const updateBook = async (id: string, body: object) => {
     if (!updateBook) {
       console.log("No se encuentra el libro")
    } else { 
-    console.log(updateBook)
+    console.log(updateBook, "Tu libro ha sido actualizado")
    }
   } catch (error) {
     console.log("Error al actualizar tu libro")
@@ -128,3 +140,4 @@ const deleteBook = async (id: string) => {
     console.log("Error al borrar tu libro")
   }
 }
+
