@@ -52,8 +52,9 @@ Este proyecto es una pequeña aplicación en Node.js con TypeScript que permite 
 npm install
 ```
 
-3. Asegurate de tener corriendo MongoDB localmente o conectarte a una instancia externa.
-4. Configurá tu archivo de conexión `config/mongo.ts` con la URL de tu base de datos.
+3. Crear archivo ".env" con el valor que se encuentra en ".env.example".
+4. Asegurate de tener corriendo MongoDB localmente o conectarte a una instancia externa.
+5. Configurá tu archivo de conexión `config/mongo.ts` con la URL de tu base de datos.
 
 ---
 
@@ -62,6 +63,7 @@ npm install
 Para correr el proyecto en modo desarrollo:
 
 ```bash
+npm run build
 npm run dev
 ```
 
