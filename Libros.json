@@ -4,140 +4,120 @@
     "titulo": "Don Quijote de la Mancha",
     "autor": "Miguel de Cervantes",
     "anio": 1605,
-    "editorial": "Francisco de Robles",
     "genero": "Novela"
   },
   {
     "titulo": "Historia de dos ciudades",
     "autor": "Charles Dickens",
     "anio": 1859,
-    "editorial": "Chapman & Hall",
     "genero": "Ficción histórica"
   },
   {
     "titulo": "El Señor de los Anillos",
     "autor": "J. R. R. Tolkien",
     "anio": 1954,
-    "editorial": "Allen & Unwin",
     "genero": "Fantasía"
   },
   {
     "titulo": "El Principito",
     "autor": "Antoine de Saint-Exupéry",
     "anio": 1943,
-    "editorial": "Reynal & Hitchcock",
     "genero": "Ficción filosófica"
   },
   {
     "titulo": "Harry Potter y la piedra filosofal",
     "autor": "J.K. Rowling",
     "anio": 1997,
-    "editorial": "Bloomsbury",
     "genero": "Fantasía"
   },
   {
     "titulo": "El hobbit",
     "autor": "J. R. R. Tolkien",
     "anio": 1937,
-    "editorial": "George Allen & Unwin",
     "genero": "Fantasía"
   },
   {
     "titulo": "Sueño en el pabellón rojo",
     "autor": "Cao Xueqin",
     "anio": 1791,
-    "editorial": "Desconocida",
     "genero": "Clásico chino"
   },
   {
     "titulo": "Diez negritos",
     "autor": "Agatha Christie",
     "anio": 1939,
-    "editorial": "Collins Crime Club",
     "genero": "Misterio"
   },
   {
     "titulo": "El león, la bruja y el armario",
     "autor": "C. S. Lewis",
     "anio": 1950,
-    "editorial": "Geoffrey Bles",
     "genero": "Fantasía"
   },
   {
     "titulo": "Ella",
     "autor": "H. Rider Haggard",
     "anio": 1887,
-    "editorial": "Longmans",
     "genero": "Aventura"
   },
   {
     "titulo": "El código Da Vinci",
     "autor": "Dan Brown",
     "anio": 2003,
-    "editorial": "Doubleday",
     "genero": "Thriller"
   },
   {
     "titulo": "Cien años de soledad",
     "autor": "Gabriel García Márquez",
     "anio": 1967,
-    "editorial": "Editorial Sudamericana",
     "genero": "Realismo mágico"
   },
   {
     "titulo": "El alquimista",
     "autor": "Paulo Coelho",
     "anio": 1988,
-    "editorial": "Rocco",
     "genero": "Ficción filosófica"
   },
   {
     "titulo": "Lo que el viento se llevó",
     "autor": "Margaret Mitchell",
     "anio": 1936,
-    "editorial": "Macmillan Publishers",
     "genero": "Romance histórico"
   },
   {
     "titulo": "Crepúsculo",
     "autor": "Stephenie Meyer",
     "anio": 2005,
-    "editorial": "Little, Brown",
     "genero": "Romance paranormal"
   },
   {
     "titulo": "Piense y hágase rico",
     "autor": "Napoleon Hill",
     "anio": 1937,
-    "editorial": "The Ralston Society",
     "genero": "Autoayuda"
   },
   {
     "titulo": "Harry Potter y la cámara secreta",
     "autor": "J.K. Rowling",
     "anio": 1998,
-    "editorial": "Bloomsbury",
     "genero": "Fantasía"
   },
   {
     "titulo": "Harry Potter y el prisionero de Azkaban",
     "autor": "J.K. Rowling",
     "anio": 1999,
-    "editorial": "Bloomsbury",
     "genero": "Fantasía"
   },
   {
     "titulo": "Harry Potter y el cáliz de fuego",
     "autor": "J.K. Rowling",
     "anio": 2000,
-    "editorial": "Bloomsbury",
     "genero": "Fantasía"
   },
   {
     "titulo": "Harry Potter y la Orden del Fénix",
     "autor": "J.K. Rowling",
     "anio": 2003,
-    "editorial": "Bloomsbury",
     "genero": "Fantasía"
   }
 ]

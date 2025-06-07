@@ -1,13 +1,19 @@
 import express from "express"
 import { connectDB } from "./src/config/mongo";
-import mongoose, { Document, Schema } from "mongoose";
-const fs = require('fs');
+import { booksRoutes } from "./src/routes/booksRoutes";
+import { Book } from "./src/models/bookModels";
 process.loadEnvFile()
 
 const PORT = process.env.PORT || 3000
 
 connectDB()
 
+const app = express()
+app.use(express.json())
+
+app.use("/api/books", booksRoutes)
+
+const fs = require('fs');
 
 //Funcion para cargar DB de libros del archivo "Libros.json"
 
