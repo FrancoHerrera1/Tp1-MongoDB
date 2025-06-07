@@ -17,20 +17,6 @@ interface BookInterface extends Document {
   estado: "disponible" | "agotado",
 }
 
-const bookSchema: Schema = new Schema<BookInterface>({
-  titulo: { type: String, required: true },
-  autor: { type: String, required: true },
-  anio: { type: Number, required: true },
-  editorial: { type: String, required: true },
-  genero: { type: String, required: true },
-  estado: { type: String, enum: ["disponible", "agotado"], default: "disponible" },
-}, { timestamps: false, versionKey: false })
-
-bookSchema.set("strict", true)
-
-const Book = mongoose.model<BookInterface>("book", bookSchema)
-
-
 //Funcion para cargar DB de libros del archivo "Libros.json"
 
 async function start() {
