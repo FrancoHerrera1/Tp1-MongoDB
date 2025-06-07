@@ -1,6 +1,10 @@
-import { connectDB } from "./config/mongo";
+import express from "express"
+import { connectDB } from "./src/config/mongo";
 import mongoose, { Document, Schema } from "mongoose";
 const fs = require('fs');
+process.loadEnvFile()
+
+const PORT = process.env.PORT || 3000
 
 connectDB()
 
