@@ -38,12 +38,20 @@ createBook({
 
 //Se declara "getBooks" para obtener todos los libros disponibles
 
-const getBooks = async () => {
+const getBooks = async (req: Request, res: Response): Promise<any> => {
   try {
     const books = await Book.find()
-    console.log(books)
+     return res.json({
+      success: true,
+      data: books,
+      message: "Listas de libros cargados"
+    })
   } catch (error) {
-    console.log("Error al recuperar tus libros")
+    const err = error as Error
+    return res.status(500).json({
+      succes: false,
+      message: err.message
+    })
   }
 }
 
@@ -52,16 +60,29 @@ const getBooks = async () => {
 
 //Se declara "getBookById" para obtener un libro por su id
 
-const getBookById = async (id: string) => {
+const getBookById = async (req: Request, res: Response): Promise<any> => {
   try {
-    const book = await Book.findById(id)
-    if (!book) {
-      console.log("Tu libro no ha sido encontrado")
+    const body = req.body
+    const book = await Book.findById(body.id)
+    if (book) {
+      return res.json({
+      success: true,
+      data: book,
+      message: "Libro encontrado"
+      })
     } else {
-      console.log(book)
+      return res.json({
+      success: true,
+      data: {},
+      message: "Tu libro no ha sido encontrado"
+      })
     }
   } catch (error) {
-    console.log("Error al recuperar tu libro")
+    const err = error as Error
+    return res.status(500).json({
+      succes: false,
+      message: err.message
+    })
   }
 }
 
@@ -70,34 +91,54 @@ const getBookById = async (id: string) => {
 
 //Se declara "getBookByName" para obtener un libro por su nombre
 
-const getBookByName = async (name: string) => {
+const getBookByName = async (req: Request, res: Response): Promise<any> => {
   try {
-    const book = await Book.findOne({ titulo: name })
-  if (!book) {
-    console.log("Tu libro no ha sido encontrado")
-  } else {
-    console.log(book);
-  }
+    const body = req.body
+    const book = await Book.findOne({ titulo: body.name })
+  if (book) {
+      return res.json({
+      success: true,
+      data: book,
+      message: "Libro encontrado"
+      })
+    } else {
+      return res.json({
+      success: true,
+      data: {},
+      message: "Tu libro no ha sido encontrado"
+      })
+    }
   } catch (error) {
-    console.log("Error al recuperar tu libro")
+    const err = error as Error
+    return res.status(500).json({
+      succes: false,
+      message: err.message
+    })
   }
-};
+}
 
 //Para buscar un libro por su nombre se usa:  getBookByName("titulo del Libro")
 
 
 //Se declara "updateBook" para buscar el libro por id y actualizarlo
 
-const updateBook = async (id: string, body: object) => {
+const updateBook = async (req: Request, res: Response): Promise<any> => {
   try {
+    const id = req.params.id
+    const body = req.body
     const updateBook = await Book.findByIdAndUpdate(id, body, { new: true })
-    if (!updateBook) {
-      console.log("No se encuentra el libro")
-   } else { 
-    console.log(updateBook, "Tu libro ha sido actualizado!")
-   }
+    if (!updateBook) return res.status(404).json({ success: false, message: "not found book" })
+    res.json({
+      success: true,
+      data: updateBook,
+      message: "Tu libro ha sido actualizado!"
+    })
   } catch (error) {
-    console.log("Error al actualizar tu libro")
+    const err = error as Error
+    res.status(500).json({
+      success: false,
+      message: err.message
+    })
   }
 }
 
@@ -106,16 +147,22 @@ const updateBook = async (id: string, body: object) => {
 
 // Se declara "deleteBook" para buscar el libro por id y borrarlo
 
-const deleteBook = async (id: string) => {
+const deleteBook = async (req: Request, res: Response): Promise<any> => {
   try {
+    const id = req.params.id
     const deletedBook = await Book.findByIdAndDelete(id)
-    if (!deletedBook) {
-      console.log("Libro no encontrado")
-    } else {
-      console.log(deletedBook, "Tu libro ha sido borrado!")
-    }
+    if (!deletedBook) return res.status(404).json({ sucess: false, message: "Libro no encontrado!" })
+    return res.json({
+      success: true,
+      data: deletedBook,
+      message: "Libro borrado con éxito"
+    })
   } catch (error) {
-    console.log("Error al borrar tu libro")
+    const err = error as Error
+    return res.json({
+      success: false,
+      message: err.message
+    })
   }
 }
 
