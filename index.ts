@@ -13,6 +13,11 @@ app.use(express.json())
 
 app.use("/api/books", booksRoutes)
 
+app.listen(PORT, () => {
+  console.log(`Servidor en escucha en el puerto http://localhost:${PORT}`)
+  connectDB()
+})
+
 const fs = require('fs');
 
 //Funcion para cargar DB de libros del archivo "Libros.json"
