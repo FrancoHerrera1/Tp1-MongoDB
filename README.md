@@ -9,6 +9,7 @@ Este proyecto es una pequeña aplicación en Node.js con TypeScript que permite 
 - **Node.js**
 - **TypeScript**
 - **MongoDB + Mongoose**
+- **Express**
 - **fs (File System)** para leer archivos JSON
 
 ---
@@ -54,7 +55,7 @@ npm install
 
 3. Crear archivo ".env" con el valor que se encuentra en ".env.example".
 4. Asegurate de tener corriendo MongoDB localmente o conectarte a una instancia externa.
-5. Configurá tu archivo de conexión `config/mongo.ts` con la URL de tu base de datos.
+5. Configurá tu archivo de conexión `src/config/mongo.ts` con la URL de tu base de datos.
 
 ---
 
@@ -73,7 +74,7 @@ Esto compilará y ejecutará el proyecto con `ts-node-dev`.
 
 ## 🧠 ¿Cómo se usa?
 
-Una vez ejecutado, podés usar las funciones directamente dentro del archivo `index.ts`, por ejemplo:
+Una vez ejecutado, podés usar las funciones directamente dentro del archivo `index.ts` o desde consola utilizando CURL, por ejemplo:
 
 ### Crear un nuevo libro:
 
@@ -82,9 +83,7 @@ createBook({
   titulo: "Nuevo libro",
   autor: "Autor Ejemplo",
   anio: 2023,
-  editorial: "Mi editorial",
   genero: "Ficción",
-  estado: "disponible"
 });
 ```
 
@@ -137,8 +136,7 @@ deleteBook("id_del_libro");
   titulo: string,
   autor: string,
   anio: number,
-  editorial: string,
   genero: string,
-  estado: "disponible" | "agotado"
+  disponible: boolean,
 }
 ```
