@@ -17,15 +17,27 @@ Este proyecto es una pequeña aplicación en Node.js con TypeScript que permite 
 ## 📁 Estructura del proyecto
 
 ```
-.
-├── libros.json            # Archivo con la data inicial de libros
-├── config/
-│   └── mongo.ts           # Conexión a la base de datos
-├── models/
-│   └── book.ts            # Esquema y modelo del libro
-├── index.ts               # Archivo principal con lógica CRUD
+├── dist/
+├── index.ts                     # Archivo principal con lógica CRUD
+├── Libros.json                  # Archivo con la data inicial de libros
+├── node_modules/
 ├── package.json
-└── tsconfig.json
+├── package-lock.json
+├── tsconfig.json
+├── README.md
+└── src/
+    ├── routes/
+    │   └── booksRoutes.ts       # Definición de rutas   
+    ├── config/
+    │    └── mongo.ts            # Conexión a la base de datos
+    ├── controllers/       
+    │   └── booksControllers.ts  # Controladores
+    ├── interfaces             
+    │   └── Book.ts              # Interfaz del libro
+    ├── models/
+    │   └── bookModels.ts        # Modelo del libro
+    └── utils/
+    │   └── utilsBooks.ts        
 ```
 
 ---
@@ -125,6 +137,67 @@ updateBook("id_del_libro", { titulo: "Título actualizado", anio: 2024 });
 
 ```ts
 deleteBook("id_del_libro");
+```
+
+---
+
+## Otra forma de utilizarlo ##
+
+## 🧪 Endpoints disponibles (`/api/books`)
+
+> ⚠️ Todos los endpoints se asumen corriendo en: `http://localhost:3000/api/books`
+
+### 🔍 Obtener todos los libros
+
+```bash
+curl http://localhost:3000/api/books
+```
+
+---
+
+### 🔍 Buscar libro por nombre
+
+```bash
+curl http://localhost:3000/api/books/Harry%20Potter
+```
+
+---
+
+### 🔍 Buscar libro por ID
+
+```bash
+curl http://localhost:3000/api/books/ID_DEL_LIBRO
+```
+
+---
+
+### ➕ Crear un nuevo libro
+
+```bash
+curl -X POST http://localhost:3000/api/books   -H "Content-Type: application/json"   -d '{
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "anio": 1967,
+    "genero": "Realismo mágico"
+  }'
+```
+
+---
+
+### ✏️ Actualizar libro por ID
+
+```bash
+curl -X PATCH http://localhost:3000/api/books/ID_DEL_LIBRO   -H "Content-Type: application/json"   -d '{
+    "anio": 1980
+  }'
+```
+
+---
+
+### ❌ Eliminar libro por ID
+
+```bash
+curl -X DELETE http://localhost:3000/api/books/ID_DEL_LIBRO
 ```
 
 ---
