@@ -29,7 +29,7 @@ Este proyecto es una pequeña aplicación en Node.js con TypeScript que permite 
     ├── routes/
     │   └── booksRoutes.ts       # Definición de rutas   
     ├── config/
-    │    └── mongo.ts            # Conexión a la base de datos
+    │   └── mongo.ts             # Conexión a la base de datos
     ├── controllers/       
     │   └── booksControllers.ts  # Controladores
     ├── interfaces             
@@ -37,7 +37,7 @@ Este proyecto es una pequeña aplicación en Node.js con TypeScript que permite 
     ├── models/
     │   └── bookModels.ts        # Modelo del libro
     └── utils/
-    │   └── utilsBooks.ts        
+        └── utilsBooks.ts        
 ```
 
 ---
@@ -141,7 +141,7 @@ deleteBook("id_del_libro");
 
 ---
 
-## Otra forma de utilizarlo ##
+## Otra forma de utilizarlo (a través de la consola) ##
 
 ## 🧪 Endpoints disponibles (`/api/books`)
 
