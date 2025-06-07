@@ -8,14 +8,6 @@ const PORT = process.env.PORT || 3000
 
 connectDB()
 
-interface BookInterface extends Document {
-  titulo: string,
-  autor: string,
-  anio: number,
-  editorial: string,
-  genero: string,
-  estado: "disponible" | "agotado",
-}
 
 //Funcion para cargar DB de libros del archivo "Libros.json"
 
